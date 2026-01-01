@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"io"
 	"log"
-	"mime/multipart"
+	
 	"net/http"
 	"os"
 	"path/filepath"
@@ -447,7 +447,7 @@ func (rs *RepositoryServer) handleUpload(w http.ResponseWriter, r *http.Request)
 	}
 
 	// Get uploaded file
-	file, handler, err := r.FormFile("package")
+	file, _, err := r.FormFile("package")
 	if err != nil {
 		http.Error(w, "Failed to get file", http.StatusBadRequest)
 		return
